@@ -12,7 +12,7 @@ public class CurrencyExchangeController {
 	@Autowired
 	Environment env;
 @GetMapping("/currency-exchnage/from/{from}/to/{to}")
-	public CurrencyExchange retrieveRxchangeValue(@PathVariable String from, @PathVariable String to) {
+	public CurrencyExchange retrieveExchangeValue(@PathVariable String from, @PathVariable String to) {
 	CurrencyExchange currencyExchange=new CurrencyExchange(1001,from,to,50);
 	currencyExchange.setEnvironment(env.getProperty("server.port"));
 	return currencyExchange;
