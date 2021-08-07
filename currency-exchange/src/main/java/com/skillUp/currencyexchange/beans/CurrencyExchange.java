@@ -2,7 +2,6 @@ package com.skillUp.currencyexchange.beans;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
 @Entity
 public class CurrencyExchange {
 	@Id

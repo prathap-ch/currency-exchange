@@ -9,14 +9,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillUp.currencyexchange.beans.CurrencyExchange;
+import com.skillUp.currencyexchange.repositories.CurrencyExchangeRepository;
 @RestController
 public class CurrencyExchangeController {
+	@Autowired
+	CurrencyExchangeRepository repository;
 	@Autowired
 	Environment env;
 	private final Logger logger=LoggerFactory.getLogger(CurrencyExchangeController.class);
 @GetMapping("/currency-exchange/from/{from}/to/{to}")
 	public CurrencyExchange retrieveExchangeValue(@PathVariable String from, @PathVariable String to) {
-	CurrencyExchange currencyExchange=new CurrencyExchange(1001,from,to,50);
+	CurrencyExchange currencyExchange=repository.getById(1001);
 	currencyExchange.setEnvironment(env.getProperty("server.port"));
 	logger.info("*************************CURRENCY EXCHANGE SERVICE *********************");
 	return currencyExchange;
